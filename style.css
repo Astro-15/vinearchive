@@ -98,37 +98,40 @@ p {
 }
 
 .fancy-btn {
-  display: flex; /* 1. Forces links to stack on top of each other */
+  display: flex;             /* Stacks them on top of each other */
   align-items: center;
   justify-content: center;
   gap: 0.5em;
-  padding: 0.5em 1.2em; /* 2. Shrank the size of the buttons */
-  font-size: 0.95rem; /* 2. Made link font smaller */
+  
+  /* Size and Spacing */
+  padding: 0.5em 1.2em;      /* Shrank the padding to make the button smaller */
+  font-size: 0.95rem;        /* Made the link text smaller */
+  margin: 6px 0;             /* Brought them much closer together vertically */
+  width: max-content;        /* Keeps the buttons tight to the text on the left */
+  border-radius: 32px;
+  
+  /* Premium Dark Matte Color Palette */
   font-family: 'Montserrat', Arial, sans-serif;
   font-weight: 700;
-  color: #00C191;
-  background: #000000;
-  border: 2px solid #00C191;
-  border-radius: 32px;
-  cursor: pointer;
-  transition: transform 0.15s, box-shadow 0.15s, background 0.3s;
-  margin: 8px 0; /* 2. Brought them much closer to each other vertically */
   text-decoration: none;
-  width: max-content; /* 1. Keeps them fitted tightly to the text on the left side */
+  color: #ffffff;            /* Clean, crisp white text instead of bright green */
+  background: #111b18;       /* Very sleek, deep flat dark background */
+  border: 2px solid #00C191; /* Sharp accent border line */
   
-  /* 3. Forces sharp pixel rendering during transitions to stop fuzziness */
+  /* Anti-Fuzziness fixes */
   transform: translateZ(0); 
   backface-visibility: hidden;
-  box-shadow: 0 4px 10px rgba(0, 193, 145, 0.2); /* Made glow tighter so it's not fuzzy */
+  box-shadow: 0 4px 10px rgba(0, 193, 145, 0.15); /* Subtled down the glow so it isn't blurry */
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
 }
 
 .fancy-btn i {
   font-size: 1.1em;
 }
 
+/* Crisp hover change without shifting scales or positions */
 .fancy-btn:hover {
-  transform: translateY(-2px); /* Scale can cause blurry text on hover, sticking to a crisp lift */
-  box-shadow: 0 6px 16px rgba(0, 193, 145, 0.5);
-  background: #00C191;
-  color: #000000;
+  background: #00C191;       /* Swaps to solid green on hover */
+  color: #000000;            /* Swaps text to black for high contrast readability */
+  box-shadow: 0 6px 16px rgba(0, 193, 145, 0.4);
 }
