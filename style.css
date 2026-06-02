@@ -9,6 +9,9 @@ body {
   align-items: center;
   justify-content: center;
   overflow-x: hidden;
+  /* Anti-aliasing to make fonts look incredibly crisp */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .fancy-bg {
@@ -57,22 +60,22 @@ body {
   z-index: 1;
   background: #003024;
   border-radius: 24px;
-  box-shadow: 0 12px 40px #003024; /* Fixed colon typo here */
-  padding: 48px 36px 36px 36px;
+  box-shadow: 0 12px 40px #003024;
+  padding: 40px 32px 32px 32px;
   max-width: 420px;
-  text-align: left; /* Changed from center to left-align container content */
+  text-align: left; /* 1. Aligns text content inside container to the left */
   margin: 32px;
-  backdrop-filter: blur(1px);
   border: 2px solid #00C191;
+  /* Removed backdrop-filter blur here because it renders text fuzzy on many screens */
 }
 
 h1 {
   font-family: 'Montserrat', Arial, sans-serif;
-  font-size: 2.8rem;
+  font-size: 2.4rem; /* Slipped down slightly for better balance */
   color: #00C191;
   margin-bottom: 0.3em;
-  letter-spacing: 2px;
-  text-shadow: 0 2px 12px #00C191;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 8px rgba(0, 193, 145, 0.4); /* Made text-shadow more clean and subtle */
   animation: fadeInDown 1s cubic-bezier(.77,0,.18,1.01);
 }
 
@@ -82,10 +85,10 @@ h1 {
 }
 
 p {
-  font-size: 1.25rem;
+  font-size: 1.1rem; /* Slightly smaller to match crisp styling */
   color: #00C191;
   margin-top: 0;
-  margin-bottom: 1.5em;
+  margin-bottom: 1.2em;
   animation: fadeInUp 1.2s cubic-bezier(.77,0,.18,1.01);
 }
 
@@ -95,24 +98,28 @@ p {
 }
 
 .fancy-btn {
-  display: flex; /* Changed to block/flex layout to stack on the left */
+  display: flex; /* 1. Forces links to stack on top of each other */
   align-items: center;
   justify-content: center;
   gap: 0.5em;
-  padding: 0.5em 1.5em; /* Reduced padding to make them smaller */
-  font-size: 0.95rem; /* Reduced font size */
+  padding: 0.5em 1.2em; /* 2. Shrank the size of the buttons */
+  font-size: 0.95rem; /* 2. Made link font smaller */
   font-family: 'Montserrat', Arial, sans-serif;
   font-weight: 700;
   color: #00C191;
   background: #000000;
   border: 2px solid #00C191;
   border-radius: 32px;
-  box-shadow: 0 4px 16px #00C191;
   cursor: pointer;
   transition: transform 0.15s, box-shadow 0.15s, background 0.3s;
-  margin: 0.4s 0; /* Reduced top/bottom spacing and removed horizontal margins */
+  margin: 8px 0; /* 2. Brought them much closer to each other vertically */
   text-decoration: none;
-  width: max-content; /* Keeps the button shrunk tightly around its text */
+  width: max-content; /* 1. Keeps them fitted tightly to the text on the left side */
+  
+  /* 3. Forces sharp pixel rendering during transitions to stop fuzziness */
+  transform: translateZ(0); 
+  backface-visibility: hidden;
+  box-shadow: 0 4px 10px rgba(0, 193, 145, 0.2); /* Made glow tighter so it's not fuzzy */
 }
 
 .fancy-btn i {
@@ -120,8 +127,8 @@ p {
 }
 
 .fancy-btn:hover {
-  transform: translateY(-2px) scale(1.02); /* Slight adjustment for the smaller scale */
-  box-shadow: 0 6px 24px #00C191;
+  transform: translateY(-2px); /* Scale can cause blurry text on hover, sticking to a crisp lift */
+  box-shadow: 0 6px 16px rgba(0, 193, 145, 0.5);
   background: #00C191;
   color: #000000;
 }
