@@ -52,19 +52,21 @@ instead of the original Vine servers.
 
 2. In Filza, navigate to:<br><br>
 
-<code>Payload/Vine.app/</code><br><br>
+<code class="discord-box">Payload/Vine.app/</code><br><br>
 
 3. Locate the main executable. It is usually named:<br><br>
 
-<code>Vine</code><br><br>
+<code class="discord-box">Vine</code><br><br>
 
 4. Open the executable with Filza's built-in Hex Editor.<br><br>
 
 5. Use the <strong>Search</strong> function and search for:<br><br>
 
-<code>api.vineapp.com</code><br><br>
-
-or any other Vine API domains used by the app.<br><br>
+<code class="discord-box">api.vineapp.com</code><br><br>
+<code class="discord-box">media.vineapp.com</code><br><br>
+<code class="discord-box">config.vineapp.com</code><br><br>
+<code class="discord-box">vine.co/explore/vx</code><br><br>
+<small>the <code class="discord-box">x</code> is a replacement for <code class="discord-box">v2</code></small> or <code class="discord-box">v3</code>, if your iPA has either <code class="discord-box">v2</code></small> or <code class="discord-box">v3</code> it doesnt matter the number.
 
 6. Replace the domain with your custom server domain.<br><br>
 
@@ -101,20 +103,20 @@ advanced patching techniques.<br><br>
 
 3. Open:<br><br>
 
-<code>Payload/Vine.app/Vine</code><br><br>
+<code class="discord-box">Payload/Vine.app/Vine</code><br><br>
 
 4. Open HexEd.it in your browser and drag the executable into the editor.<br><br>
 
 5. Press <strong>Ctrl + F</strong> and search for:<br><br>
 
-<code>api.vineapp.com</code><br><br>
+<code class="discord-box">api.vineapp.com</code><br><br>
 
 using ASCII/Text mode.<br><br>
 
 6. Replace each server address with your custom server address.<br><br>
 
 Keep the replacement the same length as the original whenever possible. If it
-is shorter, fill the remaining bytes with <code>00</code> values. Do not make
+is shorter, fill the remaining bytes with <code class="discord-box">00</code> values. Do not make
 the binary larger unless you know how to rebuild or patch Mach-O binaries.<br><br>
 
 7. Save the modified executable.<br><br>
@@ -130,7 +132,7 @@ the binary larger unless you know how to rebuild or patch Mach-O binaries.<br><b
 
 <p>
 • Some Vine builds may reference multiple domains. Search for all occurrences of
-<code>vineapp.com</code>, <code>api.vineapp.com</code>, <code>vine.co</code>,
+<code class="discord-box">vineapp.com</code>, <code class="discord-box">api.vineapp.com</code>, <code class="discord-box">vine.co</code>,
 and any CDN or API endpoints used by your specific version.<br><br>
 
 • If the app uses HTTPS certificate pinning, changing the server address alone
