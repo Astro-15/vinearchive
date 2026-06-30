@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Basic stuff -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Embed stuff -->
+  <meta name="description" content="Patching">
+  <meta name="author" content="Astro15">
+  <title>Patching.</title>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Styles + maybe js in the future? -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/x-icon" href="https://astro-15.github.io/vinearchive/assets/favicon/favicon.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="https://astro-15.github.io/vinearchive/assets/favicon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://astro-15.github.io/vinearchive/assets/favicon/favicon-32x32.png">    
+  <link rel="icon" type="image/png" sizes="16x16" href="https://astro-15.github.io/vinearchive/assets/favicon/favicon-16x16.png">
+</head>
+<body>
+  <div class="fancy-bg">
+    <span class="circle1"></span>
+    <span class="circle2"></span>
+    <span class="circle3"></span>
+  </div>
+  <!--first container-->
+  <div class="container">
+    <h1>How to patch the Vine application.</h1>
+
+    <h2>Android</h2>
+    <h3>Patching the Vine IPA to Use Custom Servers</h3>
+
+    <h2>Option 3 – Using MT Manager (Android)</h2>
+
+<p><strong>Requirements</strong></p>
+
+<p>
+• An Android device.<br>
+• MT Manager installed (download link provided below).<br>
+• The Vine APK.
+</p>
+
+<p><strong>Steps</strong></p>
+
+<p>
+1. Open MT Manager and locate the Vine APK.<br><br>
+
+2. Tap the APK and select <strong>View</strong>.<br><br>
+
+3. Open the <code class="discord-box">resources.arsc</code> file.<br><br>
+
+4. Select <strong>ARSC Editor Plus</strong> when prompted.<br><br>
+
+5. Expand the <strong>string</strong> drop-down folder.<br><br>
+
+6. Tap the file named <strong>string</strong>.<br><br>
+
+7. Search for the original Vine domains, including:<br><br>
+
+<code class="discord-box">api.vineapp.com</code><br>
+<code class="discord-box">media.vineapp.com</code><br>
+<code class="discord-box">config.vineapp.com</code><br><br>
+<code class="discord-box">vine.co/explore/vx</code><br><br> You also need to delete the <code class="discord-box">s</code> in <code class="discord-box">https</code> in order to get around SSL Pinning, Instead of <code class="discord-box">https://api.vineapp.com</code> It's <code class="discord-box">http://api.vineapp.com</code>.<br><br>
+
+8. Save your changes and exit the editor.<br><br>
+
+9. Save the modified APK if prompted by MT Manager.<br><br>
+
+10. Install the modified APK and launch the app.
+</p>
+
+<h2>Notes</h2>
+
+<p>
+• Different versions of Vine may store server addresses in different locations. If you cannot find them in <code class="discord-box">resources.arsc</code>, they may be located elsewhere in the APK.<br><br>
+
+• If the app uses HTTPS certificate validation, additional modifications may be required so it trusts your custom server.<br><br>
+
+• Always keep a backup of the original APK before making any modifications.
+</p>
+
+<h2>Option 4 – Using APKTool (Android)</h2>
+
+<p><strong>Requirements</strong></p>
+
+<p>
+• An Android device.<br>
+• APKTool for Android installed (download link provided below).<br>
+• The Vine APK.
+</p>
+
+<p><strong>Steps</strong></p>
+
+<p>
+1. Open APKTool and select the Vine APK.<br><br>
+
+2. Decompile the APK using the app's interface.<br><br>
+
+3. After decompiling, open the extracted folder.<br><br>
+
+4. Search the folder for the original Vine domains, including:<br><br>
+
+<code class="discord-box">api.vineapp.com</code><br>
+<code class="discord-box">media.vineapp.com</code><br>
+<code class="discord-box">config.vineapp.com</code><br><br>
+<code class="discord-box">vine.co/explore/vx</code><br><br>
+<small>the <code class="discord-box">x</code> is a replacement for <code class="discord-box">v2</code> or <code class="discord-box">v3</code>, if your iPA has either <code class="discord-box">v2</code> or <code class="discord-box">v3</code> it doesnt matter the number.</small><br><br>
+
+5. Replace each occurrence with your custom server address where needed.<br><br>
+
+6. Rebuild the APK from within APKTool.<br><br>
+
+7. Sign the rebuilt APK if prompted.<br><br>
+
+8. Install the modified APK on your Android device.
+</p>
+
+<h2>Notes</h2>
+
+<p>
+• Keep a backup of the original APK before making any changes.<br><br>
+
+• If the app fails to connect after patching, make sure your custom backend supports the API endpoints expected by the version of Vine you are using.
+</p>
