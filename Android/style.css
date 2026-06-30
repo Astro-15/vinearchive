@@ -98,12 +98,3 @@ pagering-link {
   display: inline-block;
   vertical-align: top;
 }
-
-.discord-box {
-    background-color: #000000; /* Pure Black background */
-    color: #ffffff;            /* Pure White text for high contrast */
-    padding: 2px 6px;          
-    border-radius: 4px;        
-    font-family: 'Consolas', 'Courier New', monospace; 
-    font-size: 85%;            
-}
