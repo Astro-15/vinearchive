@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Basic stuff -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Embed stuff -->
+  <meta name="description" content="Vine APK's.">
+  <meta name="author" content="Astro15">
+  <title>Android.</title>
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Styles + maybe js in the future? -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/x-icon" href="https://astro-15.github.io/vinearchive/assets/favicon/favicon.ico">
+  <link rel="shortcut icon" type="image/x-icon" href="https://astro-15.github.io/vinearchive/assets/favicon/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://astro-15.github.io/vinearchive/assets/favicon/favicon-32x32.png">    
+  <link rel="icon" type="image/png" sizes="16x16" href="https://astro-15.github.io/vinearchive/assets/favicon/favicon-16x16.png">
+</head>
+<body>
+  <div class="fancy-bg">
+    <span class="circle1"></span>
+    <span class="circle2"></span>
+    <span class="circle3"></span>
+  </div>
+  <!--first container-->
+  <div class="container">
+    <h1>How to patch the Vine application.</h1>
+
+    <h2>iOS</h2>
+    <h3>Patching the Vine IPA to Use Custom Servers</h3>
+
+<p>
+This guide explains how to patch the Vine IPA so it connects to our custom backend
+instead of the original Vine servers.
+</p>
+
+<h2>Option 1 – Using Filza (On iPhone)</h2>
+
+<p><strong>Requirements</strong></p>
+
+<p>
+• A jailbroken device or an environment that allows Filza.<br>
+• Filza File Manager installed.<br>
+• The Vine IPA.
+</p>
+
+<p><strong>Steps</strong></p>
+
+<p>
+1. Install or extract the Vine IPA.<br><br>
+
+2. In Filza, navigate to:<br><br>
+
+<code class="discord-box">Payload/Vine.app/</code><br><br>
+
+3. Locate the main executable. It is usually named:<br><br>
+
+<code class="discord-box">Vine</code><br><br>
+
+4. Open the executable with Filza's built-in Hex Editor.<br><br>
+
+5. Use the <strong>Search</strong> function and search for:<br><br>
+
+<code class="discord-box">api.vineapp.com</code><br><br>
+<code class="discord-box">media.vineapp.com</code><br><br>
+<code class="discord-box">config.vineapp.com</code><br><br>
+<code class="discord-box">vine.co/explore/vx</code><br><br>
+<small>the <code class="discord-box">x</code> is a replacement for <code class="discord-box">v2</code> or <code class="discord-box">v3</code>, if your iPA has either <code class="discord-box">v2</code> or <code class="discord-box">v3</code> it doesnt matter the number.</small><br><br>
+  
+6. Replace the domain with your custom server domain.<br><br>
+
+<strong>Important:</strong> If editing directly in a hex editor, the replacement
+must not change the file size. If your new domain is shorter than the original,
+pad the remaining bytes with <code>00</code> (null bytes). If it is longer,
+a simple hex edit will not work and the binary must be modified using more
+advanced patching techniques.<br><br>
+
+7. Save the file.<br><br>
+
+8. Re-sign the app if required.<br><br>
+
+9. Install and launch the patched app.
+</p>
+
+<h3>Option 2 – Using HexEd.it (Windows, macOS, Linux)</h3>
+
+<p><strong>Requirements</strong></p>
+
+<p>
+• The Vine IPA.<br>
+• A ZIP extraction utility.<br>
+• A web browser.<br>
+• Access to HexEd.it.
+</p>
+
+<p><strong>Steps</strong></p>
+
+<p>
+1. Rename the IPA file to <code>.zip</code>.<br><br>
+
+2. Extract the archive.<br><br>
+
+3. Open:<br><br>
+
+<code class="discord-box">Payload/Vine.app/Vine</code><br><br>
+
+4. Open HexEd.it in your browser and drag the executable into the editor.<br><br>
+
+5. Press <strong>Ctrl + F</strong> and search for:<br><br>
+
+<code class="discord-box">api.vineapp.com</code><br><br>
+
+using ASCII/Text mode.<br><br>
+
+6. Replace each server address with your custom server address.<br><br>
+
+Keep the replacement the same length as the original whenever possible. If it
+is shorter, fill the remaining bytes with <code class="discord-box">00</code> values. Do not make
+the binary larger unless you know how to rebuild or patch Mach-O binaries.<br><br>
+
+7. Save the modified executable.<br><br>
+
+8. Replace the original executable inside the extracted IPA.<br><br>
+
+9. Compress the files back into an IPA.<br><br>
+
+10. Re-sign the IPA before installing it on your device.
+</p>
+
+<h4>Notes</h4>
+
+<p>
+• Some Vine builds may reference multiple domains. Search for all occurrences of
+<code class="discord-box">vineapp.com</code>, <code class="discord-box">api.vineapp.com</code>, <code class="discord-box">vine.co</code>,
+and any CDN or API endpoints used by your specific version.<br><br>
+
+• If the app uses HTTPS certificate pinning, changing the server address alone
+may not be sufficient. You may also need to disable certificate pinning or
+modify the trust logic so the app accepts your server's certificate.<br><br>
+
+• Always keep a backup of the original executable before making changes.<br><br>
+
+After patching and installing the app, it should communicate with your custom
+server instead of the original Vine infrastructure, provided your backend
+implements the expected API endpoints.
+</p>
+    <h2><a href="https://astro-15.github.io/vinearchive/patching/">Back.</a></h2>
+  </div>
+</body>
+</html> 
