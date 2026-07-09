@@ -85,7 +85,7 @@ footer {
   left: 0;
   bottom: 0;
   width: 100%;
-  text-align: start;
+  text-align: bottom-left;
   font-size: small;
   margin-top: auto;
 }
